@@ -1,7 +1,7 @@
 export default function Page() {
     return (
         <div>
-            <h1 style={{ backgroundColor: `#000` }}>О нас</h1>
+            <h1 style={{ backgroundColor: `#000` }}>Войти</h1>
         </div>
     );
 }
