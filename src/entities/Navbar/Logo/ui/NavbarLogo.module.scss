@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoNavBar {
+    display: flex;
+    align-items: center;
+    margin-right: 0.25rem;
+
+    @media screen and (max-width: 480px){
+        display: none;
+    }
+}
+
+.logoNameNavBar {
+    @media screen and (max-width: 640px){
+        display: none;
+    }
+}
