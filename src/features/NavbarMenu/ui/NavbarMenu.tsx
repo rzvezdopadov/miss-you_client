@@ -1,6 +1,8 @@
 import { Menu, MenuProps } from 'antd';
 import cls from './NavbarMenu.module.scss';
+import themes from '@/shared/themes/themes.module.scss';
 import Link, { LinkProps } from 'next/link';
+import { classNames } from '@/shared/lib/className/className';
 
 interface ILocalLinkProps extends LinkProps {
     title?: React.ReactNode;
@@ -11,7 +13,7 @@ const LocalLink = (props: ILocalLinkProps) => {
     const { href, title } = props;
 
     return (
-        <Link className={cls.link} href={href}>
+        <Link className={classNames(cls.link, {}, [themes.text_color])} href={href}>
             {title}
         </Link>
     );
@@ -34,6 +36,14 @@ const itemsNoAuth: MenuProps['items'] = [
 
 export const NavbarMenu = () => {
     return (
-        <Menu defaultSelectedKeys={['1']} style={{ width: 300 }} mode="vertical" theme="dark" triggerSubMenuAction="click" items={itemsNoAuth}></Menu>
+        <Menu
+            // defaultSelectedKeys={['1']}
+            className={classNames('', {}, [themes.bg_color])}
+            style={{ minWidth: 300, justifyContent: 'center' }}
+            mode="horizontal"
+            theme="dark"
+            triggerSubMenuAction="click"
+            items={itemsNoAuth}
+        ></Menu>
     );
 };

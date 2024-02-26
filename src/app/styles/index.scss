@@ -1,0 +1,18 @@
+@import "./reset";
+@import "../../shared/themes/normal.scss";
+@import "../../shared/themes/dark.scss";
+// @import "../../shared/themes/themes.scss";
+
+body {
+  background: url(../../assets/img/relations.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 64px);
+}

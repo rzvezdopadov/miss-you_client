@@ -1,0 +1,28 @@
+.dark_theme {
+    --bg-color: #001529;
+    --inverted-bg-color: #dce1e6;
+    --primary-color: #04ff04;
+    --inverted-primary-color: #1677ff;
+    --secondary-color: #049604;
+    --inverted-secondary-color: #0e5bc5;
+
+    --text-color: #DBDBDB;
+    --hint-color: #555555;
+    --cancel-color: #D95757;
+    --save-color: #6CD98B;
+    --icon-color: #74A2B2;
+    --accent-color: #5ED3F3;
+
+    // skeleton
+    --skeleton-color: var(--inverted-bg-color);;
+    --skeleton-shadow: rgba(255 255 255 / 20%);
+
+    // code
+    --code-bg-color: #1212a1;
+
+    // card
+    --card-bg-color: #0d0d6b;
+
+    // listbox
+    --listbox-bg-color: #0d0d6b;
+}
