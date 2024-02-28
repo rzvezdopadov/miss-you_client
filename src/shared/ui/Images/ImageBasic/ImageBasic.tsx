@@ -12,7 +12,7 @@ interface ImageBasicProps extends ImageProps {
 export const ImageBasic = (props: ImageBasicProps) => {
     const newProps = { ...props };
     // eslint-disable-next-line
-    newProps.className = classNames(newProps.className ? newProps.className : '', {}, [cls[newProps.rounded ? newProps.rounded : 'not']]);
+    newProps.className = classNames(newProps.className || '', {}, [cls[newProps.rounded || 'not']]);
 
     return <Image {...newProps}></Image>;
 };
