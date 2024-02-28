@@ -1,8 +1,8 @@
 'use client';
 import { Theme } from '@/shared/const/theme';
-import { LOCAL_STORAGE_THEME_KEY } from '../context/LocalStorageKey';
+import { LOCAL_STORAGE_THEME_KEY } from '../../../../shared/const/LocalStorageKey';
 import { useEffect, useMemo, useState } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
 
 interface ThemeProviderProps {
     initialTheme?: Theme;
