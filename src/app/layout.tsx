@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './styles/index.scss';
 import { Navbar } from '@/widgets/Navbar';
-import { ThemeProvider } from '@/shared/lib/providers/ThemeProvider';
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { StoreProvider } from './providers/StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <ThemeProvider>
-                    <Navbar></Navbar>
-                    <main className="main">{children}</main>
-                    <ThemeSwitcher />
+                    <StoreProvider>
+                        <Navbar></Navbar>
+                        <main className="main">{children}</main>
+                        <ThemeSwitcher />
+                    </StoreProvider>
                 </ThemeProvider>
             </body>
         </html>
