@@ -18,8 +18,8 @@ export const tokenSlice = createSlice({
     initialState,
     reducers: {
         setToken: (state, action: PayloadAction<string>) => {
+            if (typeof action.payload !== 'undefined') localStorage?.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload);
             state.token = action.payload;
-            if (action.payload) localStorage?.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload);
         },
     },
 });
