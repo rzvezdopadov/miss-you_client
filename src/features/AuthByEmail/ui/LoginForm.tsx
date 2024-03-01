@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '@/app/providers/StoreProvider';
 import { API_URL } from '@/shared/const/api';
 import { ModalLoading, messageBasic } from '@/shared/ui/Modals';
 import { getToken } from '@/entities/Token/model/selectors/modelSelectors';
+import { useRouter } from 'next/navigation';
 
 const getRandomCaptchaLink = () => `${API_URL}captcha/${Random.getRandomString(8)}.png`;
 
@@ -30,6 +31,7 @@ export const LoginForm = () => {
     const isLoading = useAppSelector(getLoginFormIsLoading);
     const error = useAppSelector(getLoginFormError);
     const token = useAppSelector(getToken);
+    const router = useRouter();
 
     const onChangeEmail = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
@@ -77,7 +79,7 @@ export const LoginForm = () => {
     useEffect(() => {
         if (!token) return;
 
-        location.replace('/');
+        router.push('/user/likes', { scroll: false });
     }, [token]);
 
     useEffect(() => {
