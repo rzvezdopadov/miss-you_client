@@ -1,6 +1,7 @@
 import { TokenSchema } from '@/entities/Token';
 import { TownsSchema } from '@/entities/Towns';
-import { LoginFormSchema } from '@/features/AuthByEmail/model/types/login.types';
+import { LoginFormSchema } from '@/features/AuthByEmail';
+import { SignupFormSchema } from '@/features/Registration';
 import { AxiosInstance } from 'axios';
 
 export interface StateSchema {
@@ -8,6 +9,7 @@ export interface StateSchema {
     // Async reducers
     towns: TownsSchema;
     loginForm: LoginFormSchema;
+    signupForm: SignupFormSchema;
 }
 
 export interface ThunkExtraArg {

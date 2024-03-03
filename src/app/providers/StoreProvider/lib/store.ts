@@ -4,6 +4,7 @@ import { ThunkExtraArg } from './StateSchema';
 import { townsReducer } from '@/entities/Towns';
 import { loginFormReducer } from '@/features/AuthByEmail';
 import { tokenReducer } from '@/entities/Token';
+import { signupFormReducer } from '@/features/Registration';
 
 export const makeStore = () => {
     const extraArg: ThunkExtraArg = {
@@ -13,8 +14,10 @@ export const makeStore = () => {
     const store = configureStore({
         reducer: {
             token: tokenReducer,
+            // Async reducers
             towns: townsReducer,
             loginForm: loginFormReducer,
+            signupForm: signupFormReducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
