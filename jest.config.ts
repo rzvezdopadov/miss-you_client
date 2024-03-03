@@ -1,13 +1,17 @@
 import type { Config } from 'jest';
-import nextJest from 'next/jest.js';
-
-const createJestConfig = nextJest({
-    dir: './',
-});
 
 const config: Config = {
-    coverageProvider: 'v8',
+    moduleDirectories: ['node_modules'],
+    moduleNameMapper: {
+        '\\.(css|scss)$': 'identity-obj-proxy',
+        '^next/': '<rootDir>/node_modules/next',
+        '^antd/': '<rootDir>/node_modules/antd',
+        '^@/(.*)$': '<rootDir>/src/$1',
+    },
+    transform: {
+        '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    },
     testEnvironment: 'jsdom',
 };
 
-export default createJestConfig(config);
+export default config;
