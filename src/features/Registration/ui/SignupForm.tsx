@@ -142,20 +142,23 @@ export const SignupForm = () => {
         if (!token) return;
 
         router.push('/user/likes', { scroll: false });
-        dispatch(signupFormActions.setEmail(''));
-        dispatch(signupFormActions.setPassword(''));
-        dispatch(signupFormActions.setLocation(''));
-        dispatch(signupFormActions.setGender(Gender.length));
-        dispatch(signupFormActions.setGenderVapor(GenderVapor.length));
-        dispatch(signupFormActions.setDayOfBirth(32));
-        dispatch(signupFormActions.setMonthOfBirth(12));
-        dispatch(signupFormActions.setYearOfBirth(2000));
-        dispatch(signupFormActions.setCaptcha(''));
     }, [token]);
 
     useEffect(() => {
         dispatch(fetchTowns({}));
         setCaptchaLink(getRandomCaptchaLink());
+
+        return () => {
+            dispatch(signupFormActions.setEmail(''));
+            dispatch(signupFormActions.setPassword(''));
+            dispatch(signupFormActions.setLocation(''));
+            dispatch(signupFormActions.setGender(Gender.length));
+            dispatch(signupFormActions.setGenderVapor(GenderVapor.length));
+            dispatch(signupFormActions.setDayOfBirth(32));
+            dispatch(signupFormActions.setMonthOfBirth(12));
+            dispatch(signupFormActions.setYearOfBirth(2000));
+            dispatch(signupFormActions.setCaptcha(''));
+        };
     }, []);
 
     return (

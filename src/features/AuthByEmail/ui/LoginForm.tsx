@@ -80,13 +80,16 @@ export const LoginForm = () => {
         if (!token) return;
 
         router.push('/user/likes', { scroll: false });
-        dispatch(loginFormActions.setEmail(''));
-        dispatch(loginFormActions.setPassword(''));
-        dispatch(loginFormActions.setCaptcha(''));
     }, [token]);
 
     useEffect(() => {
         setCaptchaLink(getRandomCaptchaLink());
+
+        return () => {
+            dispatch(loginFormActions.setEmail(''));
+            dispatch(loginFormActions.setPassword(''));
+            dispatch(loginFormActions.setCaptcha(''));
+        };
     }, []);
 
     return (
