@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.round {
+    display: flex;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 100%;
+    box-shadow: 0px 0px 2px 2px #979997;
+    margin-right: 0.25rem;
+}
+
+.roundColor1 { background-color: #3cff00 }
+
+.roundColor2 { background-color: #319c10 }
+
+.roundColor3 { background-color: #fffb00 }
+
+.roundColor4 { background-color: #dfc903 }
+
+.roundColor5 { background-color: #807d06 }
+
+.roundColor6 { background-color: #ff0000 }
+
+.roundColor7 { background-color: #ad0303 }
+
+.roundColor8 { background-color: #680000 }
+
+.roundColor9 { background-color: #ffffff }
