@@ -1,8 +1,8 @@
 .dark_theme {
     --bg-color: #001529;
-    --inverted-bg-color: #dce1e6;
+    --inverted-bg-color: #d1d1d1;
     --bg-color-accent: #232c35;
-    --inverted-bg-color: #dce1e6;
+    --inverted-bg-color-accent: #ffffff;
     --primary-color: #04ff04;
     --inverted-primary-color: #1677ff;
     --secondary-color: #049604;
@@ -12,11 +12,11 @@
     --hint-color: #555555;
     --cancel-color: #D95757;
     --save-color: #6CD98B;
-    --icon-color: #74A2B2;
+    --icon-color: #43626b;
     --accent-color: #5ED3F3;
 
     // skeleton
-    --skeleton-color: var(--inverted-bg-color);;
+    --skeleton-color: var(--icon-color);;
     --skeleton-shadow: rgba(255 255 255 / 20%);
 
     // code
