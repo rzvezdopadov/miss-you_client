@@ -3,13 +3,11 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import axios from 'axios';
 import { Towns } from '../types/towns.types';
 
-export interface TownsProps {}
-
-export const fetchTowns = createAsyncThunk<Towns, TownsProps, ThunkConfig<TownsProps>>('towns', async (townsData: TownsProps, thunkApi) => {
+export const fetchTowns = createAsyncThunk<Towns, unknown, ThunkConfig<string>>('towns', async (_, thunkApi) => {
     const { extra, rejectWithValue } = thunkApi;
 
     try {
-        const response = await extra.api.get<Towns>('towns', townsData);
+        const response = await extra.api.get<Towns>('towns');
 
         if (!response.data) {
             throw new Error();

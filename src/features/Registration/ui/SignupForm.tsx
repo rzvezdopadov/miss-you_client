@@ -25,7 +25,7 @@ import { API_URL } from '@/shared/const/api';
 import { ModalLoading, messageBasic } from '@/shared/ui/Modals';
 import { getToken } from '@/entities/Token/model/selectors/modelSelectors';
 import { useRouter } from 'next/navigation';
-import { fetchTowns, getTowns } from '@/entities/Towns';
+import { getTowns } from '@/entities/Towns';
 import { Gender, GenderVapor } from '@/shared/const/profile';
 import dayjs from 'dayjs';
 import { SYSTEM_CONST } from '@/app/const';
@@ -145,7 +145,6 @@ export const SignupForm = () => {
     }, [token]);
 
     useEffect(() => {
-        dispatch(fetchTowns({}));
         setCaptchaLink(getRandomCaptchaLink());
 
         return () => {
