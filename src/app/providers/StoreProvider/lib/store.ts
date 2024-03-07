@@ -6,6 +6,7 @@ import { loginFormReducer } from '@/features/AuthByEmail';
 import { tokenReducer } from '@/entities/Token';
 import { signupFormReducer } from '@/features/Registration';
 import { profilesShortReducer } from '@/features/ProfilesShortGet';
+import { filtersShortProfilesReducer } from '@/features/FiltersShortProfiles';
 
 export const makeStore = () => {
     const extraArg: ThunkExtraArg = {
@@ -20,6 +21,7 @@ export const makeStore = () => {
             loginForm: loginFormReducer,
             signupForm: signupFormReducer,
             profilesShort: profilesShortReducer,
+            filtersShortProfiles: filtersShortProfilesReducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
