@@ -5,21 +5,36 @@ import { getTowns } from '@/entities/Towns';
 import { fetchProfilesShort, getProfilesShort, getProfilesShortIsLoading, profilesShortActions } from '@/features/ProfilesShortGet';
 import { TitleBasic } from '@/shared/ui/Titles';
 import { Flex } from 'antd';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import themes from '@/shared/themes/themes.module.scss';
 import { FlexWrapperWithScroll } from '@/entities/FlexWrapperWithScroll';
 import { getProfilesShortIsEmptyReciveData } from '@/features/ProfilesShortGet';
 import { SYSTEM_CONST } from '@/app/const';
 import { FiltersShortProfiles, getFiltersShortProfiles } from '@/features/FiltersShortProfiles';
 import { TextBasic } from '@/shared/ui/Texts';
+import { ProfileModal } from '@/widgets/ProfileModal';
+import { profileActions } from '@/features/ProfileGet';
 
 export default function Page() {
+    const [isModalProfileOpen, setIsModalProfileOpen] = useState(false);
+    const [userIdProfile, setUserIdProfile] = useState('');
     const dispatch = useAppDispatch();
     const profileShort = useAppSelector(getProfilesShort);
     const isLoading = useAppSelector(getProfilesShortIsLoading);
     const isEmptyReciveData = useAppSelector(getProfilesShortIsEmptyReciveData);
     const towns = useAppSelector(getTowns);
     const filters = useAppSelector(getFiltersShortProfiles);
+
+    const modalProfileOpen = (userId: string) => {
+        setUserIdProfile(userId);
+        setIsModalProfileOpen(true);
+    };
+
+    const modalProfileClose = () => {
+        setIsModalProfileOpen(false);
+        setUserIdProfile('');
+        dispatch(profileActions.setData({}));
+    };
 
     const getUsers = useCallback(
         (offset: number) => {
@@ -68,7 +83,9 @@ export default function Page() {
             <FiltersShortProfiles longFilters={true} />
             <Flex wrap="wrap" justify="center">
                 {profileShort.length ? (
-                    profileShort.map((profileShort) => <ProfileCardMini {...profileShort} key={profileShort.userId}></ProfileCardMini>)
+                    profileShort.map((profileShort) => (
+                        <ProfileCardMini {...profileShort} key={profileShort.userId} profileFullOpenClbk={modalProfileOpen}></ProfileCardMini>
+                    ))
                 ) : (
                     <TextBasic textSize="xl">Настройте фильтры</TextBasic>
                 )}
@@ -82,6 +99,7 @@ export default function Page() {
                     <></>
                 )}
             </Flex>
+            <ProfileModal userId={userIdProfile} onCancel={modalProfileClose} open={isModalProfileOpen}></ProfileModal>
         </FlexWrapperWithScroll>
     );
 }

@@ -1,3 +1,4 @@
+'use client';
 import { DateTimeVisitShort } from '@/entities/DateTimeVisit';
 import { ProfileShort } from '@/features/ProfilesShortGet';
 import { getStrYearFromAge } from '@/shared/lib/helpers/age';
@@ -12,16 +13,19 @@ import { useRef } from 'react';
 
 interface ProfileCardMiniProps extends ProfileShort {
     isLoading?: boolean;
+    profileFullOpenClbk?: (userId: string) => void;
 }
 
-export const ProfileCardMini = (profile: ProfileCardMiniProps) => {
+export const ProfileCardMini = (props: ProfileCardMiniProps) => {
     const ageStr = useRef(
-        profile?.yearOfBirth
-            ? `${TimeDate.getYearFromAge(profile.yearOfBirth)} ${getStrYearFromAge(TimeDate.getYearFromAge(profile.yearOfBirth))}`
-            : `--`,
+        props?.yearOfBirth ? `${TimeDate.getYearFromAge(props.yearOfBirth)} ${getStrYearFromAge(TimeDate.getYearFromAge(props.yearOfBirth))}` : `--`,
     );
 
-    return profile.isLoading ? (
+    const profileFullOpen = () => {
+        if (props.profileFullOpenClbk) props.profileFullOpenClbk(props?.userId || '');
+    };
+
+    return props.isLoading ? (
         <CardBasic style={{ width: '20rem', height: '14rem', margin: '0.5rem' }}>
             <Flex style={{ margin: '-0.75rem' }}>
                 <Flex vertical={true}>
@@ -51,15 +55,22 @@ export const ProfileCardMini = (profile: ProfileCardMiniProps) => {
                         preview={false}
                         style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                         src={
-                            profile?.photoLinks?.length && profile?.photoLinks[profile?.photoMain || 0]
-                                ? `/photos/${profile.photoLinks[profile?.photoMain || 0]}`
+                            props?.photoLinks?.length && props?.photoLinks[props?.photoMain || 0]
+                                ? `/photos/${props.photoLinks[props?.photoMain || 0]}`
                                 : ''
                         }
                     />
-                    <Button size="small" type="primary" shape="round" title="Посмотреть" style={{ marginTop: '1rem', marginBottom: '0.75rem' }}>
+                    <Button
+                        size="small"
+                        type="primary"
+                        shape="round"
+                        title="Посмотреть"
+                        style={{ marginTop: '1rem', marginBottom: '0.75rem' }}
+                        onClick={profileFullOpen}
+                    >
                         Посмотреть
                     </Button>
-                    <DateTimeVisitShort {...profile} />
+                    <DateTimeVisitShort {...props} />
                 </Flex>
                 <Flex
                     vertical={true}
@@ -78,7 +89,7 @@ export const ProfileCardMini = (profile: ProfileCardMiniProps) => {
                                 width: '10rem',
                             }}
                         >
-                            {profile.name}
+                            {props.name}
                         </TextBasic>
                         <TextBasic
                             strong={true}
@@ -89,8 +100,8 @@ export const ProfileCardMini = (profile: ProfileCardMiniProps) => {
                         </TextBasic>
                     </Flex>
                     <Flex justify="center" align="center" wrap={'wrap'} style={{ padding: '0.5rem', overflowY: 'scroll' }}>
-                        {profile?.interests?.length ? (
-                            profile.interests.map((interest, index) => (
+                        {props?.interests?.length ? (
+                            props.interests.map((interest, index) => (
                                 <TagBasic
                                     color="default"
                                     bordered={true}

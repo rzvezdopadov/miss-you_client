@@ -32,7 +32,6 @@ export interface ProfileShort {
     photoLinks?: string[];
     interests?: string[];
     rating?: number;
-    loading?: boolean;
 }
 
 export interface ProfilesShortSchema {
