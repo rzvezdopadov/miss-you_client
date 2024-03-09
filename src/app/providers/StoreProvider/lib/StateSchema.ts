@@ -10,12 +10,12 @@ import { AxiosInstance } from 'axios';
 export interface StateSchema {
     token: TokenSchema;
     // Async reducers
-    towns: TownsSchema;
-    loginForm: LoginFormSchema;
-    signupForm: SignupFormSchema;
-    profilesShort: ProfilesShortSchema;
-    filtersShortProfiles: FiltersShortProfilesSchema;
-    profile: ProfileSchema;
+    towns?: TownsSchema;
+    loginForm?: LoginFormSchema;
+    signupForm?: SignupFormSchema;
+    profilesShort?: ProfilesShortSchema;
+    filtersShortProfiles?: FiltersShortProfilesSchema;
+    profile?: ProfileSchema;
 }
 
 export interface ThunkExtraArg {
