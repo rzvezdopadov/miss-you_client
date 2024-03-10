@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LoginFormSchema } from '../types/login.types';
-import { fetchLoginByUsername } from '../services/loginByUserName';
+import { fetchLoginByEmail } from '../services/loginByEmail';
 
 const initialState: LoginFormSchema = {
     email: '',
@@ -10,7 +10,7 @@ const initialState: LoginFormSchema = {
 };
 
 export const loginFormSlice = createSlice({
-    name: 'login/loginByUsername',
+    name: 'loginFormSlice',
     initialState,
     reducers: {
         setEmail: (state, action: PayloadAction<string>) => {
@@ -25,14 +25,14 @@ export const loginFormSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchLoginByUsername.pending, (state) => {
+            .addCase(fetchLoginByEmail.pending, (state) => {
                 state.error = undefined;
                 state.isLoading = true;
             })
-            .addCase(fetchLoginByUsername.fulfilled, (state) => {
+            .addCase(fetchLoginByEmail.fulfilled, (state) => {
                 state.isLoading = false;
             })
-            .addCase(fetchLoginByUsername.rejected, (state, action) => {
+            .addCase(fetchLoginByEmail.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload as string;
             });

@@ -12,7 +12,7 @@ import {
     getLoginFormPassword,
 } from '../model/selectors/loginSelectors';
 import { loginFormActions } from '../model/slices/loginSlice';
-import { fetchLoginByUsername } from '../model/services/loginByUserName';
+import { fetchLoginByEmail } from '../model/services/loginByEmail';
 import { Random } from '@/shared/utils/Random';
 import { useAppDispatch, useAppSelector } from '@/app/providers/StoreProvider';
 import { API_URL } from '@/shared/const/api';
@@ -57,7 +57,7 @@ export const LoginForm = () => {
     const onLoginFormClick = useCallback(async () => {
         setCaptchaLink(getRandomCaptchaLink());
         await dispatch(
-            fetchLoginByUsername({
+            fetchLoginByEmail({
                 email,
                 password,
                 captcha,

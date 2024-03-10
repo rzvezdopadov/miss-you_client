@@ -4,7 +4,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import axios from 'axios';
 import { tokenActions } from '@/entities/Token';
 
-interface LoginByUsernameProps {
+interface LoginByEmailProps {
     email: string;
     password: string;
     captcha: string;
@@ -14,9 +14,9 @@ interface Token {
     token: string;
 }
 
-export const fetchLoginByUsername = createAsyncThunk<Token, LoginByUsernameProps, ThunkConfig<string>>(
-    'loginByUsername',
-    async (authData: LoginByUsernameProps, thunkApi) => {
+export const fetchLoginByEmail = createAsyncThunk<Token, LoginByEmailProps, ThunkConfig<string>>(
+    'fetchLoginByEmail',
+    async (authData: LoginByEmailProps, thunkApi) => {
         const { extra, dispatch, rejectWithValue } = thunkApi;
 
         try {
@@ -38,4 +38,4 @@ export const fetchLoginByUsername = createAsyncThunk<Token, LoginByUsernameProps
     },
 );
 
-export type LoginByUsernameAction = ReturnType<typeof fetchLoginByUsername>;
+export type LoginByEmailAction = ReturnType<typeof fetchLoginByEmail>;

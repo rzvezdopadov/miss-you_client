@@ -17,6 +17,6 @@ export const fetchFiltersShortProfiles = createAsyncThunk<Filters, unknown, Thun
     } catch (e) {
         if (axios.isAxiosError(e)) return rejectWithValue(e.message);
 
-        return rejectWithValue('error');
+        return rejectWithValue('request error');
     }
 });

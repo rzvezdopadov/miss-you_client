@@ -11,8 +11,7 @@ interface ImageBasicProps extends ImageProps {
 
 export const ImageBasic = (props: ImageBasicProps) => {
     const newProps = { ...props };
-    // eslint-disable-next-line
     newProps.className = classNames(newProps.className || '', {}, [cls[newProps.rounded || 'not']]);
-
-    return <Image {...newProps}></Image>;
+    // eslint-disable-next-line jsx-a11y/alt-text
+    return <Image data-testid="ImageBasic" {...newProps}></Image>;
 };
